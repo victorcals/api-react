@@ -1,7 +1,7 @@
 <p>
 <a href="https://pt-br.reactjs.org" target="_blank"><img src="https://cdn.jsdelivr.net/gh//devicons/devicon/icons/react/react-original.svg" width="200" alt="React Logo"></a>  </p>
 
-# Crud-Setup
+# Api de Filmes
 
 ## Project setup
 
