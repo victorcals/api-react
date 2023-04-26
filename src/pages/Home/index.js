@@ -3,6 +3,7 @@ import { Container, MovieList } from "../../components/Style/styles";
 import { useState } from "react";
 import React, { useEffect } from "react";
 import Keys from "../../Config/key";
+import { Link } from "react-router-dom";
 
 
 
@@ -29,9 +30,10 @@ function Home() {
                 {movies && movies.map(movie => {
                     return (
                         <Movie key={movie.id}>
-                            <a href="https://uiverse.io/challenges/open-source-card-challenge">
-                                <img src={`${movie.poster}`} alt={movie.titulo} />
-                            </a>
+
+                            <Link to={`/details/${movie.id}`}>  <img src={`${movie.poster}`} alt={movie.titulo} /></Link>
+
+
                             <span>{movie.titulo}</span>
                         </Movie>
                     );
