@@ -1,34 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './glabal.css';
 import reportWebVitals from './reportWebVitals';
-import Home from './pages/Home';
-import Details from './pages/Details/details';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css'
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
+
+// import './index.css';
+
+// import Filme from './components/Filme/index';
+// import Header from './components/Header/index';
+// import Titulo from './components/Titulo/index';
+// import Footer from './components/Footer/index';
+
+import App from './App';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
+  <React.StrictMode>
 
+    <App />
+  </React.StrictMode>
 
-  <BrowserRouter>
-
-    <Routes>
-
-      <Route path='/' element={Home} />
-      <Route path='/details/:id' element={Details} />
-
-    </Routes>
-
-
-
-    <Home />
-  </BrowserRouter>
-  // <React.StrictMode>
-
-  //   <Home />
-  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
