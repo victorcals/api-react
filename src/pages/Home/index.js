@@ -1,8 +1,9 @@
-import { Movie } from "../../components/styleMovie";
-import { Container, MovieList } from "../../components/styles";
+import { Movie } from "../../components/Style/styleMovie";
+import { Container, MovieList } from "../../components/Style/styles";
 import { useState } from "react";
 import React, { useEffect } from "react";
 import Keys from "../../Config/key";
+
 
 
 
