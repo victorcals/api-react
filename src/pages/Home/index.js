@@ -1,28 +1,32 @@
 import { Movie } from "../../components/styleMovie";
 import { Container, MovieList } from "../../components/styles";
+import { useState } from "react";
+import React, { useEffect } from "react";
+import Keys from "../../Config/key";
 
 
 
 function Home() {
 
-
-    const movies = [
-        {
-            title: 'shoto',
-            image_url: 'https://i.pinimg.com/474x/e5/b1/65/e5b165832a3fcc5140b5ab510e7c1baa.jpg'
-
-        },
-        {
-            title: 'homem ',
-            image_url: 'https://i.pinimg.com/474x/e5/b1/65/e5b165832a3fcc5140b5ab510e7c1baa.jpg'
-
-        },
-        {
-            title: 'gojo',
-            image_url: 'https://i.pinimg.com/474x/e5/b1/65/e5b165832a3fcc5140b5ab510e7c1baa.jpg'
-
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'fab9af3022mshcd4e9c52f9e1a85p195239jsne2e03521e6ff',
+            'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'
         }
-    ]
+    };
+
+
+    const [movies, setMovies] = useState([])
+
+    const image_path = 'https://image.tmdb.org/t/p/w500'
+
+
+    useEffect(() => {
+        fetch('https://moviesminidatabase.p.rapidapi.com/movie/order/byPopularity/', options)
+            .then(response => response.json())
+            .then(data => setMovies(data.results))
+    }, []);
 
     return (
 
@@ -39,7 +43,9 @@ function Home() {
                     movies.map(movie => {
                         return (
                             <Movie>
-                                <a href="https://uiverse.io/challenges/open-source-card-challenge">  <img src={movie.image_url} alt={movie.title} /></a>
+                                <a href="https://uiverse.io/challenges/open-source-card-challenge">
+
+                                    <img src={movie.image_url} alt={movie.title} /></a>
 
 
                                 <span> {movie.title}</span>
