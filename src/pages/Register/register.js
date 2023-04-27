@@ -104,7 +104,7 @@ function Register() {
         <div className="mt-5 text-center">
 
           {showButton && (
-            <button className="btn btn-success">Assinar</button>
+            <button className="btn">Assinar</button>
           )}
         </div>
 

@@ -11,99 +11,111 @@
 .button.selected {
   box-shadow: 0 0 10px #ae00ff, 0 0 25px #001eff, 0 0 50px #ae00ff;
   transition-delay: 0.4s;
+
 }
 
 
-button {
+.button,
+.button::after {
+  padding: 10px 50px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: transparent;
   position: relative;
-  padding: 1em 1.8em;
-  outline: none;
-  border: 1px solid #303030;
-  background: #212121;
-  color: #ae00ff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 15px;
-  overflow: hidden;
-  transition: 0.2s;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
+
 }
 
-button:hover {
-  box-shadow: 0 0 10px #ae00ff, 0 0 25px #001eff, 0 0 50px #ae00ff;
-  transition-delay: 0.6s;
-}
-
-button span {
+.button::after {
+  --move1: inset(50% 50% 50% 50%);
+  --move2: inset(31% 0 40% 0);
+  --move3: inset(39% 0 15% 0);
+  --move4: inset(45% 0 40% 0);
+  --move5: inset(45% 0 6% 0);
+  --move6: inset(14% 0 61% 0);
+  clip-path: var(--move1);
+  content: 'GLITCH';
   position: absolute;
-}
-
-button span:nth-child(1) {
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ae00ff);
-}
-
-button:hover span:nth-child(1) {
-  left: 100%;
-  transition: 0.7s;
-}
-
-button span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #001eff);
-}
-
-button:hover span:nth-child(3) {
-  right: 100%;
-  transition: 0.7s;
-  transition-delay: 0.35s;
-}
-
-button span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #ae00ff);
-}
-
-button:hover span:nth-child(2) {
-  top: 100%;
-  transition: 0.7s;
-  transition-delay: 0.17s;
-}
-
-button span:nth-child(4) {
-  bottom: -100%;
   left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #001eff);
+  right: 0;
+  bottom: 0;
+  display: block;
 }
 
-button:hover span:nth-child(4) {
-  bottom: 100%;
-  transition: 0.7s;
-  transition-delay: 0.52s;
+.button:hover::after {
+  animation: glitch_4011 1s;
+  text-shadow: 10 10px 10px black;
+  animation-timing-function: steps(2, end);
+  text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #E94BE8;
+  background-color: transparent;
+  border: 3px solid rgb(0, 255, 213);
 }
 
-button:active {
-  background: #ae00af;
-  background: linear-gradient(to top right, #ae00af, #001eff);
-  color: #bfbfbf;
-  box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
-  transition: 0.1s;
+.button:hover {
+  text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #E94BE8;
 }
 
-button:active span:nth-child(1) span:nth-child(2) span:nth-child(2) span:nth-child(2) {
-  transition: none;
-  transition-delay: none;
+.button:hover {
+  background-color: transparent;
+  border: 1px solid rgb(0, 255, 213);
+  box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
+}
+
+@keyframes glitch_4011 {
+  0% {
+    clip-path: var(--move1);
+    transform: translate(0px, -10px);
+  }
+
+  10% {
+    clip-path: var(--move2);
+    transform: translate(-10px, 10px);
+  }
+
+  20% {
+    clip-path: var(--move3);
+    transform: translate(10px, 0px);
+  }
+
+  30% {
+    clip-path: var(--move4);
+    transform: translate(-10px, 10px);
+  }
+
+  40% {
+    clip-path: var(--move5);
+    transform: translate(10px, -10px);
+  }
+
+  50% {
+    clip-path: var(--move6);
+    transform: translate(-10px, 10px);
+  }
+
+  60% {
+    clip-path: var(--move1);
+    transform: translate(10px, -10px);
+  }
+
+  70% {
+    clip-path: var(--move3);
+    transform: translate(-10px, 10px);
+  }
+
+  80% {
+    clip-path: var(--move2);
+    transform: translate(10px, -10px);
+  }
+
+  90% {
+    clip-path: var(--move4);
+    transform: translate(-10px, 10px);
+  }
+
+  100% {
+    clip-path: var(--move1);
+    transform: translate(0);
+  }
 }

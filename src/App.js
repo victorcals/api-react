@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Register from './pages/Register/register';
 import Nonexistent from './pages/NotFound/nonexistent';
 import Navbar from './components/Headers/navbar';
+import Logar from './pages/Login/logar';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/details/:id' element={<Details />} />
+        <Route path='/logar' element={<Logar />} />
         <Route path='/registro' element={<Register />} />
         <Route path='/nonexistent' element={<Nonexistent />} />
 

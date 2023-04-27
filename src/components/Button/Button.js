@@ -6,7 +6,7 @@ function Button(props) {
   const classes = isSelected ? "button selected" : "button";
 
   return (
-    <button className={classes} onClick={onClick}>
+    <button class="ui-btn" className={classes} onClick={onClick}>
       {label}
     </button>
   );
