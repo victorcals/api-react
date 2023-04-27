@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Details from './pages/Details/details';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Register from './pages/Register/register';
-import 'bootstrap/dist/css/bootstrap.css'
+
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/details/:id' element={<Details />} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/registro' element={<Register />} />
       </Routes>
     </Router >
   );

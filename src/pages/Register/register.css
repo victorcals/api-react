@@ -1,11 +1,15 @@
-.container {
-    display: flex;
-  }
-  
-  .item {
-    flex: 1;
-    margin-right: 10px;
-  }
-  .item:last-child {
-    margin-right: 0;
-  }
+.containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adicionando altura fixa */
+}
+
+.items {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.items:last-child {
+  margin-right: 0;
+}

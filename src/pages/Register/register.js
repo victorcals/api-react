@@ -1,16 +1,120 @@
-import React from 'react';
-import { link } from "react-router-dom"
-import '../Register/register'; // importe aqui seu arquivo CSS
 
+import { link } from "react-router-dom"
+import '../Register/register.css'; // importe aqui seu arquivo CSS
+import React, { useState } from 'react';
+import ButtonContainer from '../../components/Button/ButtonContainer.js';
+import { useLocation } from "react-router-dom";
 function Register() {
 
-    return (
+  const [name, setName] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [endereco, setEndereco] = useState('');
+  const [nomeCartao, setNomeCartaocvc] = useState('');
+  const [numeroCartao, setNumeroCartao] = useState('');
+  const [numerocvc, setNumerocvc] = useState('');
 
-        <div className="container">
-      <div className="item">Item 1</div>
-      <div className="item">Item 2</div>
+  function handleNameChange(event) {
+    setName(event.target.value);
+  }
+  function handleTelefoneChange(event) {
+    setTelefone(event.target.value);
+  }
+  function handleEnderecoChange(event) {
+    setEndereco(event.target.value);
+  }
+  function handleNomeCartaocvcChange(event) {
+    setNomeCartaocvc(event.target.value);
+  }
+  function handleNumeroCartaoChange(event) {
+    setNumeroCartao(event.target.value);
+  }
+  function handleNumerocvcChange(event) {
+    setNumerocvc(event.target.value);
+  }
+
+
+  function handleNumeroCartaoChange(event) {
+    // Remove todos os hífens do valor inserido
+    let numero = event.target.value.replace(/-/g, '');
+
+    // Adiciona um hífen após cada grupo de 4 caracteres
+    numero = numero.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1-');
+
+    setNumeroCartao(numero);
+  }
+
+
+  const location = useLocation();
+  const url = location.pathname;
+
+  const showButton = url != "/cadastro";
+
+
+  return (
+
+
+
+    <div className="container">
+      <div className="mt-5 text-center">
+        <h2> Dados do Assinante </h2>
+      </div>
+      <div className="row mt-5">
+        <div className="col">
+          <div>
+            <div className="mt-3">
+              <label> Dados do Assinante </label>
+            </div>
+          </div>
+          <div className="mt-3">
+            <label htmlFor="nameInput">Name:</label><br />
+            <input class="form-control" placeholder="Nome Completo" id="nameInput" type="text" value={name} onChange={handleNameChange} /> <br />
+          </div>
+          <div className="mt-3">
+            <label htmlFor="nameInput">Telefone:</label><br />
+            <input class="form-control" placeholder="Telefone" id="TelefoneInput" type="number" value={telefone} onChange={handleTelefoneChange} /> <br />
+          </div>
+          <div className="mt-3">
+            <label htmlFor="nameInput">Endereço:</label><br />
+            <input class="form-control" placeholder="Endereço" id="EnderecoInput" type="text" value={endereco} onChange={handleEnderecoChange} /> <br />
+          </div>
+        </div>
+        <div className="col">
+          <div className="mt-3">
+            <label> Dados do Cartão </label>
+          </div>
+          <div className="mt-3">
+            <label htmlFor="nameInput">Nome do Cartão:</label><br />
+            <input class="form-control" placeholder="Nome do cartão do usuário" id="NomeCartaoInput" type="number" value={nomeCartao} onChange={handleNomeCartaocvcChange} /> <br />
+          </div>
+          <div className="mt-3">
+            <label htmlFor="nameInput">Número do Cartão:</label><br />
+            <input className="form-control" placeholder="Número do cartão do usuário" id="NumeroCartaoInput" type="text" maxLength={19} value={numeroCartao} onChange={handleNumeroCartaoChange} /> <br />
+          </div>
+          <div className="mt-3">
+            <label htmlFor="NumerocvcInput">Número do CVC:</label><br />
+            <input className="form-control" placeholder="Número do CVC" id="NumerocvcInput" type="password" maxLength={3} value={numerocvc} onChange={handleNumerocvcChange} /> <br />
+          </div>
+        </div>
+      </div>
+      <div>
+
+        <div>
+          <ButtonContainer />
+        </div>
+        <div className="mt-5 text-center">
+
+          {showButton && (
+            <button className="btn btn-success">Assinar</button>
+          )}
+        </div>
+
+      </div>
     </div>
 
-                    )
+
+
+  );
 }
-                    export default Register;
+
+
+export default Register;
