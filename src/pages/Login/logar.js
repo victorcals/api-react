@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import '../Login/login.css';
 
 function Logar() {
@@ -17,17 +17,18 @@ function Logar() {
     }
 
     return (
+
+
+
+
+
+
         <div class="container">
             <div class="card">
-                <a class="singup">Sign Up</a>
-                <div class="inputBox1">
-                    <input type="text" value={email} onChange={handleEmailChange} />
-                    <span class="user">Email</span>
-                </div>
-
+                <a class="login">Log in</a>
                 <div class="inputBox">
                     <input type="text" value={email} onChange={handleEmailChange} />
-                    <span>Username</span>
+                    <span class="user">Username</span>
                 </div>
 
                 <div class="inputBox">
@@ -35,10 +36,19 @@ function Logar() {
                     <span>Password</span>
                 </div>
 
-                <button class="enter">Enter</button>
+                <Link to="/">
+                    <button class="enter">entrar</button>
+                </Link>
+                <Link to="/">
+                    cadastrar
+                </Link>
 
             </div>
         </div>
+
+
+
+
     )
 }
 
