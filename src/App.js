@@ -25,6 +25,7 @@ function App() {
         <Route path='/details/:id' element={<Details />} />
         <Route path='/logar' element={<Logar />} />
         <Route path='/registro' element={<Register />} />
+        <Route path='/cadastrado' element={<Register />} />
         <Route path='/nonexistent' element={<Nonexistent />} />
 
       </Routes>
