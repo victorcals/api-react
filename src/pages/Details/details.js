@@ -1,66 +1,44 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { Container } from "./style";
-import { Button } from "bootstrap";
-
+import Button from "react-bootstrap/Button";
 
 function Details() {
-
-
-    const { id } = useParams()
-    const [movies, setMovies] = useState([]);
+    const { id } = useParams();
+    const [movies, setMovies] = useState({});
 
     useEffect(() => {
-        fetch('https://my-json-server.typicode.com/marycamila184/movies/movies')
-            .then(response => response.json())
-            .then(data => {
-
-                const { titulo, ano } = data
-
-
-
-                const movies = {
-                    id,
-                    titulo: titulo.data,
-                    ano,
-                    // nota: data.nota,
-                    // poster: data.poster,
-                    // assistido: data.assistido
-
-
-
-                    // id,
-                    // titulo: data.titulo,
-                    // ano: data.ano,
-                    // nota: data.nota,
-                    // poster: data.poster,
-                    // assistido: data.assistido
-                }
-
-
-                setMovies(movies)
-            })
-
+        fetch(`https://my-json-server.typicode.com/marycamila184/movies/movies/${id}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setMovies(data);
+            });
     }, [id]);
 
     return (
         <Container>
-            <div className="movies" >
-                <img src={movies.poster} />
+            <div className="movies">
+                <img src={movies.poster} alt={movies.titulo} />
 
-                <div className="details" >
-                    <h1> Titulo: {movies.titulo}  </h1>
-                    <span>Ano123: {movies.data} </span>
+                <div className="details">
+                    <h1>Título original: {movies.titulo}</h1>
+                    <span> Ano: {movies.ano}</span>
+                    <span> Nota: {movies.nota}</span>
+                    <span> Direção: Jon Favreau  Roteiro   </span>
+                    <span> Roteiro: Matt Holloway, Mark Fergus</span>
+                    <span>assistido: {movies.assistido}</span>
 
-                    <button> voltar</button>
+
+
+
+
+                    <Link to="/">
+                        <button variant="primary">Voltar</button>
+                    </Link>
                 </div>
-
             </div>
         </Container>
-    )
-
+    );
 }
 
 export default Details;

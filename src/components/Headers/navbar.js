@@ -21,10 +21,12 @@ function Navbar() {
                         <li class="nav-item">
                             <Link className="nav-item nav-link" to='/registro'>Planos</Link>
                         </li>
-                        <li class="nav-item dropdown">
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Disabled</a>
+                            <Link className="nav-item nav-link" to='/logar'>Logar</Link>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled mr-sm-2" href="#">Disabled</a>
                         </li>
                     </ul>
 
