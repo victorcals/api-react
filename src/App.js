@@ -26,7 +26,7 @@ function App() {
         <Route path='/logar' element={<Logar />} />
         <Route path='/registro' element={<Register />} />
         <Route path='/cadastrado' element={<Register />} />
-        <Route path='/nonexistent' element={<Nonexistent />} />
+        <Route path='/*' element={<div> pagina não existe</div>} />
 
       </Routes>
     </Router >
