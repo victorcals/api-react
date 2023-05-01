@@ -23,8 +23,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/details/:id' element={<Details />} />
         <Route path='/logar' element={<Logar />} />
-        <Route path='/registro' element={<Register />} />
-        <Route path='/cadastrado' element={<Register />} />
+        <Route path='/cadastro' element={<Register />} />       
         <Route path='/*' element={<div> pagina não existe</div>} />
 
       </Routes>

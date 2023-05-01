@@ -10,7 +10,7 @@ function MovieContainer({ movies, orderBy, handleOrderBy }) {
   return (
     <div>
       <div>
-        <label htmlFor="orderBy">Ordenar por:</label>
+        <label>Ordenar por:</label>
         <select id="orderBy" value={orderBy} onChange={handleOrderBy}>
           <option value="titulo">Título</option>
           <option value="ano">Ano</option>

@@ -1,35 +1,34 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
-
+const location = useLocation();
+  const url = location.pathname;
+  const showButton = url !== "/cadastrado" && url !== "/registro";
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" >
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active">
                         <Link className="nav-item nav-link" to='/'>Home</Link>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <Link className="nav-item nav-link" to='/logar'>Logar</Link>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link disabled mr-sm-2" href="#">Disabled</a>
-                    </li>
-
-
+                    
                 </ul>
             </div>
             <div>
+            {showButton && (
                 <Link
-                    className="nav-link" to='/registro'>
-                    <button className='nav' type="button" class="btn btn-dark"> Cadastrar</button>
+                    className="nav-link" to='/cadastro'>
+                    <button className='nav btn btn-dark' type="button"> Cadastrar</button>
                 </Link>
+                     )}
+
             </div>
         </nav>
 

@@ -1,18 +1,12 @@
 import { Movie } from "../../components/Style/styleMovie";
 import { Container, MovieList, OrderByContainer } from "../../components/Style/styles";
-
 import { useState } from "react";
 import React, { useEffect } from "react";
-import Keys from "../../Config/key";
 import { Link } from "react-router-dom";
-
-// import { Assistido } from "../../components/Button/assistido"
-
 import Assistido from "../../components/Button/assistido";
 
-
-
 function Home() {
+    
     const [searchTerm, setSearchTerm] = useState('');
     const [movies, setMovies] = useState([]);
     const [orderBy, setOrderBy] = useState('titulo');

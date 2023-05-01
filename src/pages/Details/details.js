@@ -5,14 +5,6 @@ import { Container, Fina } from "./style";
 import comentarios from '../../components/Comments/index';
 import Assistido from "../../components/Button/assistido";
 
-
-
-
-
-
-// import Button from "react-bootstrap/Button";
-
-
 function Details() {
     const { id } = useParams();
     const [movies, setMovies] = useState({});
@@ -36,16 +28,11 @@ function Details() {
 
         <div>
             <Fina>
-                <h2>Detalhes</h2>
-
+                <h1> Detalhes</h1>
             </Fina>
             <Container>
                 <div className="movies">
-
-
-
                     <img src={movies.poster} alt={movies.titulo} />
-
                     <div className="details">
                         <h1>Título original: {movies.titulo}</h1>
                         <span> Ano: {movies.ano}</span>
@@ -61,33 +48,32 @@ function Details() {
                             <button variant="primary">Voltar</button>
                         </Link>
                     </div>
-
-
                 </div>
             </Container>
-
             <Fina>
-
-
                 <div>
                     <h2>Comentários:</h2>
                     {comentarios.length > 0 ? (
-                        comentarios.map((comentario) => (
-                            <div key={comentario.id}>
-                                <p>
-                                    <strong>{comentario.usuario}:</strong> {comentario.texto}
-                                </p>
-                            </div>
-                        ))
+                        comentarios.map((comentario) => {
+                            if (comentario.id_filme === movies.id) {
+                                return (
+                                    <div key={comentario.id}>
+                                        <p>
+                                            <strong>{comentario.usuario}:</strong> {comentario.texto}
+                                        </p>
+                                    </div>
+                                )
+                            } else {
+                                return null;
+                            }
+                        })
                     ) : (
                         <p>Sem comentários para esse filme.</p>
                     )}
+
                 </div>
             </Fina>
         </div>
-
-
-
     );
 }
 

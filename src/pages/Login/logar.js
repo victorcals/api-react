@@ -23,21 +23,21 @@ function Logar() {
 
 
 
-        <div class="container">
-            <div class="card">
-                <a class="login">Log in</a>
-                <div class="inputBox">
+        <div className="container">
+            <div className="card">
+                <a className="login">Log in</a>
+                <div className="inputBox">
                     <input type="text" value={email} onChange={handleEmailChange} />
-                    <span class="user">Username</span>
+                    <span className="user">Username</span>
                 </div>
 
-                <div class="inputBox">
+                <div className="inputBox">
                     <input type="text" value={email} onChange={handleEmailChange} />
                     <span>Password</span>
                 </div>
 
                 <Link to="/">
-                    <button class="enter">entrar</button>
+                    <button className="enter">entrar</button>
                 </Link>
                 <Link to="/">
                     cadastrar
