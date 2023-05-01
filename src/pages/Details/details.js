@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Container } from "./style";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 
 function Details() {
     const { id } = useParams();
