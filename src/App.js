@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './glabal.css';
@@ -11,6 +9,7 @@ import Register from './pages/Register/register';
 import Nonexistent from './pages/NotFound/nonexistent';
 import Navbar from './components/Headers/navbar';
 import Logar from './pages/Login/logar';
+import Footer from './components/Footer/index';
 
 
 function App() {
@@ -29,7 +28,10 @@ function App() {
         <Route path='/*' element={<div> pagina não existe</div>} />
 
       </Routes>
+      
+      <Footer />
     </Router >
+    
   );
 }
 export default App;

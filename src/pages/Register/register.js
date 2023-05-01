@@ -1,6 +1,6 @@
 
 import {Link } from "react-router-dom"
-import '../Register/register.css'; // importe aqui seu arquivo CSS
+import '../Register/register.css';
 import React, { useState } from 'react';
 import ButtonContainer from '../../components/Button/ButtonContainer.js';
 import { useLocation } from "react-router-dom";
@@ -96,6 +96,7 @@ function Register() {
           {showButton && (
             <Link to={`/cadastrado`}> 
             <button className="btn">Assinar</button>
+            
             </Link>
           )}
         </div>
