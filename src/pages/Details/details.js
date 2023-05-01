@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Container } from "./style";
+import { Container, Fina } from "./style";
 
 import comentarios from '../../components/Comments/index';
+import Assistido from "../../components/Button/assistido";
+
+
+
+
+
 
 // import Button from "react-bootstrap/Button";
 
@@ -19,22 +25,49 @@ function Details() {
             });
     }, [id]);
 
-    return (
-        <Container>
-            <div className="movies">
-                <img src={movies.poster} alt={movies.titulo} />
+    const handleAssistidoClick = (id) => {
+        setMovies((prevState) => ({
+            ...prevState,
+            assistido: !prevState.assistido
+        }));
+    };
 
-                <div className="details">
-                    <h1>Título original: {movies.titulo}</h1>
-                    <span> Ano: {movies.ano}</span>
-                    <span> Nota: {movies.nota}</span>
-                    <span> Direção: Jon Favreau  Roteiro   </span>
-                    <span> Roteiro: Matt Holloway, Mark Fergus</span>
-                    <span>assistido: {movies.assistido}</span>
-                    <Link to="/">
-                        <button variant="primary">Voltar</button>
-                    </Link>
+    return (
+
+        <div>
+            <Fina>
+                <h2>Detalhes</h2>
+
+            </Fina>
+            <Container>
+                <div className="movies">
+
+
+
+                    <img src={movies.poster} alt={movies.titulo} />
+
+                    <div className="details">
+                        <h1>Título original: {movies.titulo}</h1>
+                        <span> Ano: {movies.ano}</span>
+                        <span> Nota: {movies.nota}</span>
+                        <span> Direção: Jon Favreau  Roteiro   </span>
+                        <span> Roteiro: Matt Holloway, Mark Fergus</span>
+                        <Assistido
+                            assistido={movies.assistido}
+                            onClick={handleAssistidoClick}
+                            id={movies.id}
+                        />
+                        <Link to="/">
+                            <button variant="primary">Voltar</button>
+                        </Link>
+                    </div>
+
+
                 </div>
+            </Container>
+
+            <Fina>
+
 
                 <div>
                     <h2>Comentários:</h2>
@@ -50,9 +83,57 @@ function Details() {
                         <p>Sem comentários para esse filme.</p>
                     )}
                 </div>
-            </div>
-        </Container>
+            </Fina>
+        </div>
+
+
+
     );
 }
 
 export default Details;
+
+
+
+
+// <div>
+// <Container>
+//     <div className="movies">
+
+
+
+//         <img src={movies.poster} alt={movies.titulo} />
+
+//         <div className="details">
+//             <h1>Título original: {movies.titulo}</h1>
+//             <span> Ano: {movies.ano}</span>
+//             <span> Nota: {movies.nota}</span>
+//             <span> Direção: Jon Favreau  Roteiro   </span>
+//             <span> Roteiro: Matt Holloway, Mark Fergus</span>
+//             <Assistido
+//                 assistido={movies.assistido}
+//                 onClick={handleAssistidoClick}
+//                 id={movies.id}
+//             />
+//             <Link to="/">
+//                 <button variant="primary">Voltar</button>
+//             </Link>
+//         </div>
+
+//         <div>
+//             <h2>Comentários:</h2>
+//             {comentarios.length > 0 ? (
+//                 comentarios.map((comentario) => (
+//                     <div key={comentario.id}>
+//                         <p>
+//                             <strong>{comentario.usuario}:</strong> {comentario.texto}
+//                         </p>
+//                     </div>
+//                 ))
+//             ) : (
+//                 <p>Sem comentários para esse filme.</p>
+//             )}
+//         </div>
+//     </div>
+// </Container>
+// </div>

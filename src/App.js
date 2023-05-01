@@ -28,10 +28,10 @@ function App() {
         <Route path='/*' element={<div> pagina não existe</div>} />
 
       </Routes>
-      
+
       <Footer />
     </Router >
-    
+
   );
 }
 export default App;

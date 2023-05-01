@@ -36,13 +36,16 @@ function Register() {
   function handleNumeroCartaoChange(event) {
     let numero = event.target.value.replace(/-/g, '');
     numero = numero.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1-');
-    setNumeroCartao(numero);
+    if (numero.length <= 19) {
+      setNumeroCartao(numero);
+    }
   }
 
   const location = useLocation();
   const url = location.pathname;
   const showButton = url != "/cadastrado";
 
+<<<<<<< HEAD
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -57,6 +60,10 @@ function Register() {
     };
 
     console.log(user);
+=======
+  function handleAssinar() {
+    alert('Assinado com sucesso!');
+>>>>>>> 639e3262daaabc5068ef165de40250e26a6428d4
   }
 
   return (
@@ -112,7 +119,13 @@ function Register() {
         <div className="mt-5 text-center">
           {showButton && (
             <Link to={`/cadastrado`}>
+<<<<<<< HEAD
               <button className="btn" onClick={handleSubmit}>Assinar</button>
+=======
+              <button className="btn" onClick={handleAssinar}
+              >Assinar</button>
+
+>>>>>>> 639e3262daaabc5068ef165de40250e26a6428d4
             </Link>
           )}
         </div>
