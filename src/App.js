@@ -29,7 +29,7 @@ function App() {
         <Route path='/*' element={<div> <h1>  Pagina não existe </h1></div>} />
 
       </Routes>
-      <Load />
+      {/* <Load /> */}
       <Footer />
 
     </Router >

@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import Assistido from "../../components/Button/assistido";
 
 function Home() {
-    
+    const [data, setData] = useState(false);
+
     const [searchTerm, setSearchTerm] = useState('');
     const [movies, setMovies] = useState([]);
     const [orderBy, setOrderBy] = useState('titulo');
@@ -15,11 +16,21 @@ function Home() {
     useEffect(() => {
         fetch('https://my-json-server.typicode.com/marycamila184/movies/movies')
             .then(response => response.json())
-            .then(data => setMovies(data))
-            .catch(error => {
-                console.error('Erro ao carregar filmes:', error);
+            .then((data) => {
+                if (data.error) {
+                    setMovies(undefined);
+                } else {
+                    setMovies(data);
+                    setData(true);
+                }
             });
     }, []);
+
+
+
+    if (!data) {
+        return <p>Carregando...</p>;
+    }
 
     const handleOrderByChange = (event) => {
         const [newOrderBy, newOrderDirection] = event.target.value.split(',');
@@ -50,7 +61,7 @@ function Home() {
                 movie.id === id ? { ...movie, assistido: !movie.assistido } : movie
             )
         );
-    };    
+    };
 
     const handleSearchInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -64,7 +75,7 @@ function Home() {
                     <div className="col-md-3">
                         <div className="form-group">
                             <label htmlFor="search">Pesquisar:</label>
-                            <input type="text" id="search"className="form-control"value={searchTerm} onChange={handleSearchInputChange}/>
+                            <input type="text" id="search" className="form-control" value={searchTerm} onChange={handleSearchInputChange} />
                         </div>
                     </div>
                     <div className="col-md-1">

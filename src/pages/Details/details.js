@@ -8,14 +8,27 @@ import Assistido from "../../components/Button/assistido";
 function Details() {
     const { id } = useParams();
     const [movies, setMovies] = useState({});
+    const [data, setData] = useState(false);
+
 
     useEffect(() => {
         fetch(`https://my-json-server.typicode.com/marycamila184/movies/movies/${id}`)
             .then((response) => response.json())
             .then((data) => {
-                setMovies(data);
+                if (data.error) {
+                    setMovies(undefined);
+                } else {
+                    setMovies(data);
+                    setData(true);
+                }
             });
     }, [id]);
+
+    if (!data) {
+        return <p>Carregando...</p>;
+    }
+
+
 
     const handleAssistidoClick = (id) => {
         setMovies((prevState) => ({
@@ -30,49 +43,53 @@ function Details() {
             <Fina>
                 <h1> Detalhes</h1>
             </Fina>
-            <Container>
-                <div className="movies">
-                    <img src={movies.poster} alt={movies.titulo} />
-                    <div className="details">
-                        <h1>Título original: {movies.titulo}</h1>
-                        <span> Ano: {movies.ano}</span>
-                        <span> Nota: {movies.nota}</span>
-                        <span> Direção: Jon Favreau  Roteiro   </span>
-                        <span> Roteiro: Matt Holloway, Mark Fergus</span>
-                        <Assistido
-                            assistido={movies.assistido}
-                            onClick={handleAssistidoClick}
-                            id={movies.id}
-                        />
-                        <Link to="/">
-                            <button variant="primary">Voltar</button>
-                        </Link>
+            {movies ? (
+                <Container>
+                    <div className="movies">
+                        <img src={movies.poster} alt={movies.titulo} />
+                        <div className="details">
+                            <h1>Título original: {movies.titulo}</h1>
+                            <span> Ano: {movies.ano}</span>
+                            <span> Nota: {movies.nota}</span>
+                            <span> Direção: Jon Favreau  Roteiro   </span>
+                            <span> Roteiro: Matt Holloway, Mark Fergus</span>
+                            <Assistido
+                                assistido={movies.assistido}
+                                onClick={handleAssistidoClick}
+                                id={movies.id}
+                            />
+                            <Link to="/">
+                                <button variant="primary">Voltar</button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-            </Container>
-            <Fina>
-                <div>
-                    <h2>Comentários:</h2>
-                    {comentarios.length > 0 ? (
-                        comentarios.map((comentario) => {
-                            if (comentario.id_filme === movies.id) {
-                                return (
-                                    <div key={comentario.id}>
-                                        <p>
-                                            <strong>{comentario.usuario}:</strong> {comentario.texto}
-                                        </p>
-                                    </div>
-                                )
-                            } else {
-                                return null;
-                            }
-                        })
-                    ) : (
-                        <p>Sem comentários para esse filme.</p>
-                    )}
-
-                </div>
-            </Fina>
+                    <Fina>
+                        <div>
+                            <h2>Comentários:</h2>
+                            {comentarios.length > 0 ? (
+                                comentarios.map((comentario) => {
+                                    if (comentario.id_filme === movies.id) {
+                                        return (
+                                            <div key={comentario.id}>
+                                                <p>
+                                                    <strong>{comentario.usuario}:</strong>{" "}
+                                                    {comentario.texto}
+                                                </p>
+                                            </div>
+                                        );
+                                    } else {
+                                        return null;
+                                    }
+                                })
+                            ) : (
+                                <p>Sem comentários para esse filme.</p>
+                            )}
+                        </div>
+                    </Fina>
+                </Container>
+            ) : (
+                <p>Filme não encontrado.</p>
+            )}
         </div>
     );
 }
