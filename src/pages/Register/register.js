@@ -41,12 +41,6 @@ function Register() {
     }
   }
 
-  const location = useLocation();
-  const url = location.pathname;
-  const showButton = url != "/cadastrado";
-
-<<<<<<< HEAD
-
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -59,11 +53,8 @@ function Register() {
       CVC: numerocvc
     };
 
-    console.log(user);
-=======
-  function handleAssinar() {
-    alert('Assinado com sucesso!');
->>>>>>> 639e3262daaabc5068ef165de40250e26a6428d4
+    console.log(user);   
+      alert('Assinado com sucesso!');  
   }
 
   return (
@@ -81,15 +72,15 @@ function Register() {
             </div>
           </div>        
           <div className="mt-3">
-            <label htmlFor="nameInput">Name:</label><br />
+            <label >Name:</label><br />
             <input className="form-control" placeholder="Nome Completo" id="nameInput" type="text" value={name} onChange={handleNameChange} /> <br />
           </div>
           <div className="mt-3">
-            <label htmlFor="nameInput">Telefone:</label><br />
+            <label >Telefone:</label><br />
             <input className="form-control" placeholder="Telefone" id="TelefoneInput" type="number" value={telefone} onChange={handleTelefoneChange} /> <br />
           </div>
           <div className="mt-3">
-            <label htmlFor="nameInput">Endereço:</label><br />
+            <label >Endereço:</label><br />
             <input className="form-control" placeholder="Endereço" id="EnderecoInput" type="text" value={endereco} onChange={handleEnderecoChange} /> <br />
           </div>
         </div>
@@ -99,15 +90,15 @@ function Register() {
             <label> Dados do Cartão </label>
           </div>
           <div className="mt-3">
-            <label htmlFor="nameInput">Nome no Cartão:</label><br />
+            <label >Nome no Cartão:</label><br />
             <input className="form-control" placeholder="Nome do cartão do usuário" id="NomeCartaoInput" type="text" value={nomeCartao} onChange={handleNomeCartaocvcChange} /> <br />
           </div>
           <div className="mt-3">
-            <label htmlFor="nameInput">Número do Cartão:</label><br />
+            <label >Número do Cartão:</label><br />
             <input className="form-control" placeholder="Número do cartão do usuário" id="NumeroCartaoInput" type="text" maxLength={19} value={numeroCartao} onChange={handleNumeroCartaoChange} /> <br />
           </div>
           <div className="mt-3">
-            <label htmlFor="NumerocvcInput">Número do CVC:</label><br />
+            <label >Número do CVC:</label><br />
             <input className="form-control" placeholder="Número do CVC" id="NumerocvcInput" type="password" maxLength={3} value={numerocvc} onChange={handleNumerocvcChange} /> <br />
           </div>
         </div>
@@ -116,18 +107,8 @@ function Register() {
         <div>
           <ButtonContainer />
         </div>
-        <div className="mt-5 text-center">
-          {showButton && (
-            <Link to={`/cadastrado`}>
-<<<<<<< HEAD
-              <button className="btn" onClick={handleSubmit}>Assinar</button>
-=======
-              <button className="btn" onClick={handleAssinar}
-              >Assinar</button>
-
->>>>>>> 639e3262daaabc5068ef165de40250e26a6428d4
-            </Link>
-          )}
+        <div className="mt-5 text-center">      
+           <button className="btn" onClick={handleSubmit}>Assinar</button>     
         </div>
       </div>
       </form>
