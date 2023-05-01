@@ -6,8 +6,14 @@ import React, { useEffect } from "react";
 import Keys from "../../Config/key";
 import { Link } from "react-router-dom";
 
+// import { Assistido } from "../../components/Button/assistido"
+
+import Assistido from "../../components/Button/assistido";
+
+
 
 function Home() {
+    const [searchTerm, setSearchTerm] = useState('');
     const [movies, setMovies] = useState([]);
     const [orderBy, setOrderBy] = useState('titulo');
     const [orderDirection, setOrderDirection] = useState('asc');
@@ -44,15 +50,33 @@ function Home() {
 
     const sortedMovies = [...movies].sort(compareMovies);
 
+    const handleAssistidoClick = (id) => {
+        setMovies(
+            movies.map((movie) =>
+                movie.id === id ? { ...movie, assistido: !movie.assistido } : movie
+            )
+        );
+    };    
+
+    const handleSearchInputChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
     return (
         <Container>
             <h1>Filmes</h1>
             <OrderByContainer>
-                <div className="d-flex justify-content-end">
+                <div className="d-flex justify-content-between mr-md-1">
+                    <div className="col-md-3">
+                        <div className="form-group">
+                            <label htmlFor="search">Pesquisar:</label>
+                            <input type="text" id="search"className="form-control"value={searchTerm} onChange={handleSearchInputChange}/>
+                        </div>
+                    </div>
                     <div className="col-md-1">
                         <div className="form-group">
                             <label htmlFor="orderby">Ordenar por:</label>
-                            <select id="orderby" className="form-control" value={`${orderBy},${orderDirection}`} onChange={handleOrderByChange}>                            
+                            <select id="orderby" className="form-control" value={`${orderBy},${orderDirection}`} onChange={handleOrderByChange}>
                                 <option value="titulo,asc">Título (A-Z)</option>
                                 <option value="titulo,desc">Título (Z-A)</option>
                                 <option value="ano,asc">Ano antigo</option>
@@ -65,7 +89,7 @@ function Home() {
                 </div>
             </OrderByContainer>
             <MovieList>
-                {sortedMovies && sortedMovies.map(movie => {
+                {sortedMovies.filter(movie => movie.titulo.toLowerCase().includes(searchTerm.toLowerCase())).map(movie => {
                     return (
                         <Movie key={movie.id}>
                             <Link to={`/details/${movie.id}`}>
@@ -73,6 +97,11 @@ function Home() {
                             </Link>
                             <span>{movie.titulo}</span>
                             <span>Nota: {movie.nota}</span>
+                            <Assistido
+                                assistido={movie.assistido}
+                                onClick={handleAssistidoClick}
+                                id={movie.id}
+                            />
                         </Movie>
                     );
                 })}

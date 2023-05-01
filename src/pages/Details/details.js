@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Container } from "./style";
+
+import comentarios from '../../components/Comments/index';
+
 // import Button from "react-bootstrap/Button";
+
 
 function Details() {
     const { id } = useParams();
@@ -27,14 +31,24 @@ function Details() {
                     <span> Direção: Jon Favreau  Roteiro   </span>
                     <span> Roteiro: Matt Holloway, Mark Fergus</span>
                     <span>assistido: {movies.assistido}</span>
-
-
-
-
-
                     <Link to="/">
                         <button variant="primary">Voltar</button>
                     </Link>
+                </div>
+
+                <div>
+                    <h2>Comentários:</h2>
+                    {comentarios.length > 0 ? (
+                        comentarios.map((comentario) => (
+                            <div key={comentario.id}>
+                                <p>
+                                    <strong>{comentario.usuario}:</strong> {comentario.texto}
+                                </p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>Sem comentários para esse filme.</p>
+                    )}
                 </div>
             </div>
         </Container>
