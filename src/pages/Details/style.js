@@ -61,3 +61,23 @@ span {
     margin-bottom: 1rem;
   }
 `
+
+
+export const Fina = styled.div`
+h2{
+  text-align: center;
+}
+
+
+
+div{
+  text-align: center;
+  margin: 2rem;
+}
+`
+
+
+
+
+
+

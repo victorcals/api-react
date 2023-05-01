@@ -35,7 +35,9 @@ function Register() {
   function handleNumeroCartaoChange(event) {
     let numero = event.target.value.replace(/-/g, '');
     numero = numero.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1-');
-    setNumeroCartao(numero);
+    if (numero.length <= 19) {
+      setNumeroCartao(numero);
+    }
   }
 
   const location = useLocation();
