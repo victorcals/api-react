@@ -1,17 +1,23 @@
-import loadgind from '../Loading/load.jpg'
-
-const loadgind = ''
-
+import './load.css';
 
 function Load() {
+    const showLoading = () => {
+        const loading = document.createElement('div');
+        loading.className = 'loading';
+        document.body.appendChild(loading);
+    }
 
     return (
-        <div>
-            <img src='https://www.seekpng.com/png/full/19-197364_contact-us-gerenciadecostosmecor-net-ve-png-for-loading.png' alt='load' ></img>
+        <div class="pyramid-loader">
+            <div class="wrapper">
+                <span class="side side1"></span>
+                <span class="side side2"></span>
+                <span class="side side3"></span>
+                <span class="side side4"></span>
+                <span class="shadow"></span>
+            </div>
         </div>
-    )
-
+    );
 }
-
 
 export default Load;
