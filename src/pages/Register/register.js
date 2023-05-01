@@ -1,5 +1,5 @@
 
-import {Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import '../Register/register.css';
 import React, { useState } from 'react';
 import ButtonContainer from '../../components/Button/ButtonContainer.js';
@@ -32,8 +32,8 @@ function Register() {
     setNumerocvc(event.target.value);
   }
 
-  function handleNumeroCartaoChange(event) {    
-    let numero = event.target.value.replace(/-/g, '');  
+  function handleNumeroCartaoChange(event) {
+    let numero = event.target.value.replace(/-/g, '');
     numero = numero.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1-');
     setNumeroCartao(numero);
   }
@@ -41,6 +41,10 @@ function Register() {
   const location = useLocation();
   const url = location.pathname;
   const showButton = url != "/cadastrado";
+
+  function handleAssinar() {
+    alert('Assinado com sucesso!');
+  }
 
   return (
 
@@ -94,9 +98,10 @@ function Register() {
         <div className="mt-5 text-center">
 
           {showButton && (
-            <Link to={`/cadastrado`}> 
-            <button className="btn">Assinar</button>
-            
+            <Link to={`/cadastrado`}>
+              <button className="btn" onClick={handleAssinar}
+              >Assinar</button>
+
             </Link>
           )}
         </div>

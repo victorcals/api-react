@@ -3,6 +3,12 @@ import { useParams, Link } from "react-router-dom";
 import { Container } from "./style";
 
 import comentarios from '../../components/Comments/index';
+import Assistido from "../../components/Button/assistido";
+
+
+
+
+
 
 // import Button from "react-bootstrap/Button";
 
@@ -19,6 +25,13 @@ function Details() {
             });
     }, [id]);
 
+    const handleAssistidoClick = (id) => {
+        setMovies((prevState) => ({
+            ...prevState,
+            assistido: !prevState.assistido
+        }));
+    };
+
     return (
         <Container>
             <div className="movies">
@@ -30,7 +43,11 @@ function Details() {
                     <span> Nota: {movies.nota}</span>
                     <span> Direção: Jon Favreau  Roteiro   </span>
                     <span> Roteiro: Matt Holloway, Mark Fergus</span>
-                    <span>assistido: {movies.assistido}</span>
+                    <Assistido
+                        assistido={movies.assistido}
+                        onClick={handleAssistidoClick}
+                        id={movies.id}
+                    />
                     <Link to="/">
                         <button variant="primary">Voltar</button>
                     </Link>
