@@ -9,14 +9,16 @@ function Details() {
     const { id } = useParams();
     const [movies, setMovies] = useState({});
     const [data, setData] = useState(false);
+    const [notFound, setNotFound] = useState(false);
+
 
 
     useEffect(() => {
         fetch(`https://my-json-server.typicode.com/marycamila184/movies/movies/${id}`)
             .then((response) => response.json())
             .then((data) => {
-                if (data.error) {
-                    setMovies(undefined);
+                if (data.length === 0) {
+                    setNotFound(true);
                 } else {
                     setMovies(data);
                     setData(true);
@@ -26,6 +28,9 @@ function Details() {
 
     if (!data) {
         return <p>Carregando...</p>;
+    }
+    if (notFound) {
+        return <p>Filme não encontrado.</p>;
     }
 
 
