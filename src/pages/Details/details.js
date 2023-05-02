@@ -14,11 +14,25 @@ function Details() {
 
 
     useEffect(() => {
-        fetch(`https://my-json-server.typicode.com/marycamila184/movies/movies/${id}`)
+        fetch(`https://my-json-server.typicode.com/marycamila184/moviedetails/moviedetails/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.length === 0) {
                     setNotFound(true);
+                } else {
+                    setMovies(data);
+                    setData(true);
+                }
+            });
+    }, [id]);
+
+
+    useEffect(() => {
+        fetch(`https://my-json-server.typicode.com/marycamila184/movies/movies/${id}`)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.error) {
+                    setMovies(undefined);
                 } else {
                     setMovies(data);
                     setData(true);
@@ -58,6 +72,7 @@ function Details() {
                             <span> Nota: {movies.nota}</span>
                             <span> Direção: Jon Favreau  Roteiro   </span>
                             <span> Roteiro: Matt Holloway, Mark Fergus</span>
+                            <span> Sinopse: {movies.sinopse}</span>
                             <Assistido
                                 assistido={movies.assistido}
                                 onClick={handleAssistidoClick}
