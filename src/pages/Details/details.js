@@ -8,8 +8,10 @@ import Assistido from "../../components/Button/assistido";
 function Details() {
     const { id } = useParams();
     const [movies, setMovies] = useState({});
+    const [movie, setMovie] = useState({});
     const [data, setData] = useState(false);
     const [notFound, setNotFound] = useState(false);
+
 
 
 
@@ -23,6 +25,7 @@ function Details() {
                     setMovies(data);
                     setData(true);
                 }
+
             });
     }, [id]);
 
@@ -32,9 +35,9 @@ function Details() {
             .then((response) => response.json())
             .then((data) => {
                 if (data.error) {
-                    setMovies(undefined);
+                    setMovie(undefined);
                 } else {
-                    setMovies(data);
+                    setMovie(data);
                     setData(true);
                 }
             });
@@ -46,6 +49,8 @@ function Details() {
     if (notFound) {
         return <p>Filme não encontrado.</p>;
     }
+
+
 
 
 
@@ -69,10 +74,15 @@ function Details() {
                         <div className="details">
                             <h1>Título original: {movies.titulo}</h1>
                             <span> Ano: {movies.ano}</span>
-                            <span> Nota: {movies.nota}</span>
+                            <span> Nota: {movie.nota}</span>
                             <span> Direção: Jon Favreau  Roteiro   </span>
                             <span> Roteiro: Matt Holloway, Mark Fergus</span>
                             <span> Sinopse: {movies.sinopse}</span>
+
+
+
+
+                            <span> <h1> A Informação nota não estava disponivel na API do detalhes </h1> </span>
                             <Assistido
                                 assistido={movies.assistido}
                                 onClick={handleAssistidoClick}
