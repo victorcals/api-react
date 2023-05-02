@@ -19,4 +19,6 @@ npm install
 npm start
 ```
 
+### Site de filmes desenvolvido por Guilherme Carlos e Victor Cals
+
 
