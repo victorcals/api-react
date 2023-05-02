@@ -6,14 +6,12 @@ import comentarios from '../../components/Comments/index';
 import Assistido from "../../components/Button/assistido";
 
 function Details() {
+
     const { id } = useParams();
     const [movies, setMovies] = useState({});
     const [movie, setMovie] = useState({});
     const [data, setData] = useState(false);
     const [notFound, setNotFound] = useState(false);
-
-
-
 
     useEffect(() => {
         fetch(`https://my-json-server.typicode.com/marycamila184/moviedetails/moviedetails/${id}`)
@@ -29,7 +27,6 @@ function Details() {
             });
     }, [id]);
 
-
     useEffect(() => {
         fetch(`https://my-json-server.typicode.com/marycamila184/movies/movies/${id}`)
             .then((response) => response.json())
@@ -43,16 +40,21 @@ function Details() {
             });
     }, [id]);
 
+    
     if (!data) {
         return <p>Carregando...</p>;
     }
-    if (notFound) {
-        return <p>Filme não encontrado.</p>;
-    }
-
-
-
-
+    if (!movies.id || notFound) {
+        return (
+          <>
+            <p>Filme não encontrado.</p>
+            <Link to="/">
+              <button variant="primary">Voltar</button>
+            </Link>
+          </>
+        );
+      }
+    
 
     const handleAssistidoClick = (id) => {
         setMovies((prevState) => ({
@@ -72,17 +74,10 @@ function Details() {
                     <div className="movies">
                         <img src={movies.poster} alt={movies.titulo} />
                         <div className="details">
-                            <h1>Título original: {movies.titulo}</h1>
+                            <h1>Título: {movies.titulo}</h1>
                             <span> Ano: {movies.ano}</span>
-                            <span> Nota: {movie.nota}</span>
-                            <span> Direção: Jon Favreau  Roteiro   </span>
-                            <span> Roteiro: Matt Holloway, Mark Fergus</span>
-                            <span> Sinopse: {movies.sinopse}</span>
-
-
-
-
-                            <span> <h1> A Informação nota não estava disponivel na API do detalhes </h1> </span>
+                            <span> Ano: {movie.nota}</span>                          
+                            <span> Sinopse: {movies.sinopse}</span>                           
                             <Assistido
                                 assistido={movies.assistido}
                                 onClick={handleAssistidoClick}
